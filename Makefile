@@ -1,12 +1,11 @@
 CC = gcc
 OBJ = dint
 SOURCES = dint.c
-PARAMS = -lcrypto -lssl
 
-all: $(OBJ)
+OPENSSL_LIBS = -lcrypto -ldl -static-libgcc
 
 $(OBJ): $(SOURCES)
-	$(CC) -o $@ $^ $(PARAMS)
+	$(CC) -o $@ $^ $(OPENSSL_LIBS)
 
-clear:
+clean:
 	rm -f $(OBJ)
